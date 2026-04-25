@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You Shreya Didi</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fecdd3, #fdf2f8, #ddd6fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 58px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #f43f5e, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .7);
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
+
+        .nav button:hover,
+        .nav button.active {
+            transform: translateY(-2px);
+            background: linear-gradient(90deg, #f43f5e, #8b5cf6);
+            color: #fff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .55);
+            backdrop-filter: blur(14px);
+            padding: 35px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .08);
+            border: 1px solid rgba(255, 255, 255, .6);
+            min-height: 320px;
+            animation: fade .5s ease;
+        }
+
+        h2 {
+            font-size: 34px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            margin-top: 18px;
+            font-weight: 700;
+        }
+
+        .italic {
+            margin-top: 18px;
+            font-style: italic;
+        }
+
+        .photos {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .photos img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .title {
+                font-size: 42px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+            .photos img {
+                width: 100%;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="title">Shreya Didi ❤</h1>
+        <p class="subtitle">Made with love and memories.</p>
+
+        <div class="nav">
+            <button class="active" onclick="showPage('home',this)">HOME</button>
+            <button onclick="showPage('about',this)">U R Crazy</button>
+            <button onclick="showPage('us',this)">US</button>
+        </div>
+
+        <div class="card" id="content"></div>
+
+    </div>
+
+    <script>
+
+        const pages = {
+
+            home: `
+<h2>Home</h2>
+
+<p>
+Dear Shreya Didi, from the first day I saw you I knew we would make a great pair.... and we did,
+tamari sathe ketla lame jokes pr hasya, endless vaato kari, and we redefined the age gap.
+I have really shared a bond with you that was special which cannot be described in words.
+Whatever may be your reason to leave us, please never make this distance a barrier to our bond.
+As this chapter changes, I just want you to know how much your presence meant.
+Your smile, your energy, and the memories we made will always stay close to my heart.
+</p>
+
+<p class="highlight">I miss you already.</p>
+`,
+
+            about: `
+<h2>U R Crazy</h2>
+
+<ul style="font-size:20px; line-height:1.8; padding-left:25px;">
+<li><b>Hasmukh</b> – Always smiling and spreading happiness everywhere.</li>
+<li><b>Mastikhor</b> – Full of fun, energy, and unforgettable vibes.</li>
+<li><b>Shaitaan</b> – Playfully naughty and always up to something mischievous.</li>
+<li><b>Happy</b> – Carries positive energy that lifts everyone’s mood.</li>
+<li><b>Lovely</b> – Sweet, caring, and beautiful inside and out.</li>
+<li><b>Childish</b> – Innocently playful, carefree, and bringing joy with her cute little ways.</li>
+</ul>
+`,
+
+            us: `
+<h2>Us</h2>
+
+<div class="photos">
+<img src="image1.jpeg">
+<img src="image2.png">
+<img src="image3.png">
+</div>
+
+<p>
+We shared laughs, talks, random moments, and memories that will always matter.
+Distance may change things, but it cannot erase what we shared.
+</p>
+
+<p class="italic">No goodbye can take away the bond we built.</p>
+`
+
+        };
+
+        document.getElementById("content").innerHTML = pages.home;
+
+        function showPage(page, btn) {
+            document.getElementById("content").innerHTML = pages[page];
+
+            document.querySelectorAll(".nav button").forEach(b => {
+                b.classList.remove("active");
+            });
+
+            btn.classList.add("active");
+        }
+
+    </script>
+
+</body>
+
+</html>
